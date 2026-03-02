@@ -1,0 +1,1204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tog Zhen Wei — Electrical & Electronic Engineering Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0c0f;
+    --surface: #111318;
+    --border: #1e2330;
+    --accent: #00e5ff;
+    --accent2: #ff6b35;
+    --text: #e8ecf0;
+    --muted: #5a6275;
+    --mono: 'Share Tech Mono', monospace;
+    --display: 'Syne', sans-serif;
+    --body: 'DM Sans', sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--body);
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── NOISE OVERLAY ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0.4;
+  }
+
+  /* ── CIRCUIT GRID BACKGROUND ── */
+  .circuit-bg {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+  .circuit-bg svg {
+    width: 100%;
+    height: 100%;
+    opacity: 0.04;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.2rem 4rem;
+    background: rgba(10, 12, 15, 0.85);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: var(--mono);
+    font-size: 0.85rem;
+    color: var(--accent);
+    letter-spacing: 0.15em;
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--muted); }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+  .nav-links a {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    color: var(--muted);
+    text-decoration: none;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+    position: relative;
+  }
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--accent);
+    transition: width 0.3s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+  .nav-links a:hover::after { width: 100%; }
+
+  .nav-cta {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    padding: 0.5rem 1.2rem;
+    text-decoration: none;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: background 0.2s, color 0.2s;
+  }
+  .nav-cta:hover { background: var(--accent); color: var(--bg); }
+
+  /* ── HERO ── */
+  #hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 0 4rem;
+    z-index: 1;
+  }
+
+  .hero-content { max-width: 900px; }
+
+  .hero-tag {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    color: var(--accent);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    opacity: 0;
+    animation: fadeUp 0.8s forwards 0.3s;
+  }
+  .hero-tag::before {
+    content: '';
+    width: 2rem;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  .hero-name {
+    font-family: var(--display);
+    font-size: clamp(3.5rem, 8vw, 7rem);
+    font-weight: 800;
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    opacity: 0;
+    animation: fadeUp 0.8s forwards 0.5s;
+  }
+  .hero-name .accent { color: var(--accent); }
+
+  .hero-title {
+    font-family: var(--mono);
+    font-size: clamp(0.85rem, 1.5vw, 1rem);
+    color: var(--muted);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-top: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s forwards 0.7s;
+  }
+
+  .hero-desc {
+    font-size: 1.05rem;
+    color: #8b95a8;
+    max-width: 520px;
+    margin-top: 1.5rem;
+    line-height: 1.8;
+    opacity: 0;
+    animation: fadeUp 0.8s forwards 0.9s;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s forwards 1.1s;
+  }
+
+  .btn-primary {
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--bg);
+    background: var(--accent);
+    padding: 0.85rem 2rem;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+    clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+  }
+  .btn-primary:hover { background: #33ebff; transform: translateY(-2px); }
+
+  .btn-ghost {
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text);
+    border: 1px solid var(--border);
+    padding: 0.85rem 2rem;
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* status badge */
+  .status-badge {
+    position: absolute;
+    bottom: 3rem;
+    right: 4rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+  }
+  .status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #22c55e;
+    box-shadow: 0 0 8px #22c55e;
+    animation: pulse 2s infinite;
+  }
+
+  /* hero scan line */
+  .scanline {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    opacity: 0.3;
+    animation: scan 4s linear infinite;
+  }
+
+  /* ── SECTION BASE ── */
+  section { position: relative; z-index: 1; padding: 6rem 4rem; }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--accent);
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+    max-width: 80px;
+  }
+
+  .section-title {
+    font-family: var(--display);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 3rem;
+    line-height: 1.1;
+  }
+
+  /* ── ABOUT ── */
+  #about {
+    border-top: 1px solid var(--border);
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .about-text p {
+    color: #8b95a8;
+    margin-bottom: 1.2rem;
+    font-size: 1rem;
+  }
+
+  .about-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+  }
+
+  .stat-card {
+    border: 1px solid var(--border);
+    padding: 1.5rem;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s;
+  }
+  .stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 100%;
+    background: var(--accent);
+  }
+  .stat-card:hover { border-color: var(--accent); }
+  .stat-card:nth-child(even)::before { background: var(--accent2); }
+  .stat-num {
+    font-family: var(--display);
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--accent);
+    line-height: 1;
+  }
+  .stat-card:nth-child(even) .stat-num { color: var(--accent2); }
+  .stat-label {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-top: 0.4rem;
+  }
+
+  .about-right {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .skill-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .skill-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .skill-name {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    color: var(--text);
+    letter-spacing: 0.08em;
+  }
+  .skill-pct {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--muted);
+  }
+  .skill-bar {
+    height: 2px;
+    background: var(--border);
+    overflow: hidden;
+  }
+  .skill-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    transform-origin: left;
+    transform: scaleX(0);
+    transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .skill-fill.animate { transform: scaleX(1); }
+
+  /* ── PROJECTS ── */
+  #projects { border-top: 1px solid var(--border); }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5px;
+  }
+
+  .project-card {
+    background: var(--surface);
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: background 0.3s;
+    border: 1px solid var(--border);
+  }
+  .project-card:hover { background: #161a22; border-color: #2a3045; }
+  .project-card:hover .project-arrow { transform: translate(4px, -4px); color: var(--accent); }
+
+  .project-num {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    color: var(--muted);
+    letter-spacing: 0.15em;
+    margin-bottom: 1.5rem;
+  }
+
+  .project-icon {
+    font-size: 2rem;
+    margin-bottom: 1.2rem;
+    display: block;
+  }
+
+  .project-name {
+    font-family: var(--display);
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    line-height: 1.2;
+  }
+
+  .project-desc {
+    font-size: 0.875rem;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .tag {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    color: var(--accent);
+    border: 1px solid rgba(0, 229, 255, 0.2);
+    padding: 0.25rem 0.6rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .project-arrow {
+    font-size: 1.2rem;
+    color: var(--muted);
+    transition: transform 0.3s, color 0.3s;
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+  }
+
+  /* ── ACHIEVEMENTS ── */
+  #achievements { border-top: 1px solid var(--border); }
+
+  .achievements-list { max-width: 760px; }
+
+  .achievement-item {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 2rem;
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--border);
+    align-items: start;
+    transition: background 0.2s;
+  }
+  .achievement-item:first-child { border-top: 1px solid var(--border); }
+
+  .ach-year {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    padding-top: 0.2rem;
+  }
+
+  .ach-title {
+    font-family: var(--display);
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+  }
+  .ach-org {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  /* ── LEADERSHIP ── */
+  #leadership { border-top: 1px solid var(--border); }
+
+  .leadership-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .leadership-card {
+    border: 1px solid var(--border);
+    padding: 2rem;
+    position: relative;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+  .leadership-card:hover { border-color: var(--accent2); transform: translateY(-4px); }
+  .leadership-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent2), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .leadership-card:hover::after { opacity: 1; }
+
+  .lcard-role {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--accent2);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 0.6rem;
+  }
+  .lcard-title {
+    font-family: var(--display);
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+  }
+  .lcard-desc {
+    font-size: 0.875rem;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  /* ── TESTIMONIALS ── */
+  #testimonials { border-top: 1px solid var(--border); }
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .testimonial-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 2rem;
+    position: relative;
+  }
+  .testimonial-card::before {
+    content: '"';
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    font-family: var(--display);
+    font-size: 4rem;
+    color: var(--border);
+    line-height: 1;
+  }
+
+  .testimonial-text {
+    font-size: 0.95rem;
+    color: #8b95a8;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    font-style: italic;
+  }
+
+  .testimonial-author {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .testimonial-role {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    margin-top: 0.2rem;
+  }
+
+  /* ── CONTACT ── */
+  #contact {
+    border-top: 1px solid var(--border);
+    text-align: center;
+    padding: 7rem 4rem;
+  }
+
+  .contact-inner { max-width: 600px; margin: 0 auto; }
+
+  .contact-pre {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    color: var(--accent);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  .contact-title {
+    font-family: var(--display);
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    margin-bottom: 1.5rem;
+    line-height: 1.05;
+  }
+
+  .contact-sub {
+    color: var(--muted);
+    font-size: 1rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .contact-email {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: var(--mono);
+    font-size: 0.9rem;
+    color: var(--text);
+    text-decoration: none;
+    border: 1px solid var(--border);
+    padding: 1rem 2rem;
+    transition: border-color 0.3s, color 0.3s;
+    letter-spacing: 0.05em;
+  }
+  .contact-email:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 2rem 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+  .footer-copy {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+  }
+  .footer-links {
+    display: flex;
+    gap: 2rem;
+  }
+  .footer-links a {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    color: var(--muted);
+    text-decoration: none;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--accent); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50%       { opacity: 0.6; transform: scale(1.3); }
+  }
+  @keyframes scan {
+    0%   { top: -5px; }
+    100% { top: 100vh; }
+  }
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0; }
+  }
+
+  .cursor {
+    display: inline-block;
+    width: 2px;
+    height: 1em;
+    background: var(--accent);
+    vertical-align: text-bottom;
+    animation: blink 1s step-end infinite;
+    margin-left: 2px;
+  }
+
+  /* ── MOBILE ── */
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    section, #hero, #contact { padding: 4rem 1.5rem; }
+    footer { padding: 1.5rem; flex-direction: column; gap: 1rem; text-align: center; }
+    .about-grid,
+    .leadership-grid,
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .hero-name { font-size: clamp(2.8rem, 10vw, 5rem); }
+    .status-badge { right: 1.5rem; bottom: 2rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Circuit Grid Background -->
+<div class="circuit-bg">
+  <svg viewBox="0 0 1400 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+        <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#00e5ff" stroke-width="0.5"/>
+      </pattern>
+    </defs>
+    <rect width="100%" height="100%" fill="url(#grid)"/>
+    <!-- circuit traces -->
+    <path d="M 0 300 H 200 V 150 H 500 V 300 H 700" fill="none" stroke="#00e5ff" stroke-width="1.5"/>
+    <path d="M 700 300 H 900 V 450 H 1100 V 600 H 1400" fill="none" stroke="#00e5ff" stroke-width="1.5"/>
+    <path d="M 0 600 H 300 V 750 H 600" fill="none" stroke="#ff6b35" stroke-width="1.5"/>
+    <path d="M 1400 200 H 1200 V 400 H 1000 V 200 H 800" fill="none" stroke="#ff6b35" stroke-width="1"/>
+    <!-- nodes -->
+    <circle cx="200" cy="300" r="4" fill="none" stroke="#00e5ff" stroke-width="1.5"/>
+    <circle cx="500" cy="300" r="4" fill="none" stroke="#00e5ff" stroke-width="1.5"/>
+    <circle cx="900" cy="450" r="4" fill="none" stroke="#00e5ff" stroke-width="1.5"/>
+    <circle cx="300" cy="600" r="4" fill="none" stroke="#ff6b35" stroke-width="1.5"/>
+    <circle cx="1200" cy="400" r="4" fill="none" stroke="#ff6b35" stroke-width="1.5"/>
+    <circle cx="700" cy="300" r="6" fill="#00e5ff" opacity="0.3"/>
+    <circle cx="600" cy="750" r="6" fill="#ff6b35" opacity="0.3"/>
+  </svg>
+</div>
+
+<!-- Scanline -->
+<div class="scanline"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">TZW<span>/</span>PORTFOLIO</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#achievements">Achievements</a></li>
+    <li><a href="#leadership">Leadership</a></li>
+    <li><a href="#testimonials">Testimonials</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Contact</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-content">
+    <div class="hero-tag">// Student Engineer & Maker</div>
+    <h1 class="hero-name">
+      Tog<br>Zhen Wei<span class="accent">.</span>
+    </h1>
+    <div class="hero-title">Electrical &amp; Electronic Engineering — Zhenghua Secondary School</div>
+    <p class="hero-desc">
+      Building at the intersection of hardware and software. Passionate about electrical systems, embedded programming, and engineering solutions that matter.
+    </p>
+    <div class="hero-actions">
+      <a href="#projects" class="btn-primary">View Projects</a>
+      <a href="#about" class="btn-ghost">Learn More</a>
+    </div>
+  </div>
+
+  <div class="status-badge">
+    <div class="status-dot"></div>
+    <span>Open to opportunities</span>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label">01 — About Me</div>
+  <h2 class="section-title">Engineer in<br>the making.</h2>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>
+        I'm Tog Zhen Wei, a Secondary 4 student at Zhenghua Secondary School with a deep passion for electrical and electronic engineering. From circuit design to programming, I love understanding how technology works at its core.
+      </p>
+      <p>
+        My journey spans both hardware and software — I've developed hands-on experience with programming languages, electronics prototyping, and software development tools. I believe great engineers are those who can bridge both worlds seamlessly.
+      </p>
+      <p>
+        Outside of academics, I serve in Red Cross as my CCA, where I've developed strong leadership, teamwork, and community service values — skills that complement my technical pursuits.
+      </p>
+      <div class="about-stats">
+        <div class="stat-card">
+          <div class="stat-num">4+</div>
+          <div class="stat-label">Years of interest in EEE</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">10+</div>
+          <div class="stat-label">Projects completed</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">2+</div>
+          <div class="stat-label">Languages proficient</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">Red<br>Cross</div>
+          <div class="stat-label">CCA & Leadership</div>
+        </div>
+      </div>
+    </div>
+    <div class="about-right">
+      <div class="section-label" style="margin-bottom:1.5rem">Technical Skills</div>
+      <div class="skill-row">
+        <div class="skill-header"><span class="skill-name">Circuit Design & Electronics</span><span class="skill-pct">85%</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="--w:0.85" data-width="0.85"></div></div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-header"><span class="skill-name">Programming (Python / C)</span><span class="skill-pct">78%</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="--w:0.78" data-width="0.78"></div></div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-header"><span class="skill-name">Embedded Systems</span><span class="skill-pct">72%</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="--w:0.72" data-width="0.72"></div></div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-header"><span class="skill-name">PCB Prototyping</span><span class="skill-pct">65%</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="--w:0.65" data-width="0.65"></div></div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-header"><span class="skill-name">CAD & 3D Design</span><span class="skill-pct">60%</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="--w:0.60" data-width="0.60"></div></div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-header"><span class="skill-name">Data Analysis & Simulation</span><span class="skill-pct">70%</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="--w:0.70" data-width="0.70"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-label">02 — Projects</div>
+  <h2 class="section-title">What I've<br>built.</h2>
+  <div class="projects-grid">
+
+    <div class="project-card">
+      <div class="project-num">PROJECT // 001</div>
+      <span class="project-icon">⚡</span>
+      <div class="project-arrow">↗</div>
+      <div class="project-name">Smart Home Power Monitor</div>
+      <div class="project-desc">A real-time home energy monitoring system using current sensors, microcontrollers, and a custom dashboard interface. Tracks consumption per circuit and flags anomalies.</div>
+      <div class="project-tags">
+        <span class="tag">Arduino</span>
+        <span class="tag">Python</span>
+        <span class="tag">IoT</span>
+        <span class="tag">Sensors</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-num">PROJECT // 002</div>
+      <span class="project-icon">🤖</span>
+      <div class="project-arrow">↗</div>
+      <div class="project-name">Line-Following Robot</div>
+      <div class="project-desc">Autonomous robot with IR sensors and a PID control loop. Designed the chassis, wired all components, and wrote control logic from scratch. Won internal school robotics challenge.</div>
+      <div class="project-tags">
+        <span class="tag">Robotics</span>
+        <span class="tag">PID Control</span>
+        <span class="tag">C++</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-num">PROJECT // 003</div>
+      <span class="project-icon">🔋</span>
+      <div class="project-arrow">↗</div>
+      <div class="project-name">Solar Charge Controller</div>
+      <div class="project-desc">Designed and built a PWM solar charge controller on a custom PCB. Manages battery charging cycles, prevents overcharge, and logs data to a local server.</div>
+      <div class="project-tags">
+        <span class="tag">PCB Design</span>
+        <span class="tag">Power Electronics</span>
+        <span class="tag">Renewable Energy</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-num">PROJECT // 004</div>
+      <span class="project-icon">💡</span>
+      <div class="project-arrow">↗</div>
+      <div class="project-name">Smart LED Classroom Lighting</div>
+      <div class="project-desc">Occupancy-based adaptive lighting system that dims or activates LEDs based on ambient light and motion. Reduces energy waste and improves study conditions.</div>
+      <div class="project-tags">
+        <span class="tag">LED Control</span>
+        <span class="tag">Motion Sensors</span>
+        <span class="tag">Automation</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-num">PROJECT // 005</div>
+      <span class="project-icon">📡</span>
+      <div class="project-arrow">↗</div>
+      <div class="project-name">Wireless Sensor Network</div>
+      <div class="project-desc">Multi-node environmental monitoring system using RF modules to collect temperature, humidity, and air quality data across a school campus and visualize in real time.</div>
+      <div class="project-tags">
+        <span class="tag">RF Comms</span>
+        <span class="tag">Networking</span>
+        <span class="tag">Data Viz</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-num">PROJECT // 006</div>
+      <span class="project-icon">🧠</span>
+      <div class="project-arrow">↗</div>
+      <div class="project-name">AI-Assisted Circuit Debugger</div>
+      <div class="project-desc">Python tool that takes schematic images and fault symptoms as input, and suggests likely fault points using pattern recognition and a curated engineering knowledge base.</div>
+      <div class="project-tags">
+        <span class="tag">Python</span>
+        <span class="tag">ML</span>
+        <span class="tag">Diagnostics</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section id="achievements">
+  <div class="section-label">03 — Achievements</div>
+  <h2 class="section-title">Milestones<br>&amp; recognition.</h2>
+  <div class="achievements-list">
+    <div class="achievement-item">
+    <div class="ach-year">2026</div>
+      <div>
+        <div class="ach-title">NUS - SYNAPXE - IMDA AI Innovation Challenge - Participant</div>
+        <div class="ach-org">National University of Singapore</div>
+      </div>
+    </div>
+      <div class="achievement-item">
+      <div class="ach-year">2026</div>
+      <div>
+        <div class="ach-title">The National AI Student Challenge (NAISC) - Participant</div>
+        <div class="ach-org">National University of Singapore</div>
+      </div>
+    </div>
+      <div class="achievement-item">
+      <div class="ach-year">2026</div>
+      <div>
+        <div class="ach-title">Tan Kah Kee Young Inventors' Award (TKKYIA) - Participant</div>
+        <div class="ach-org">Singapore Tan Kah Kee Foundation</div>
+      </div>
+    </div>
+      <div class="achievement-item">
+      <div class="ach-year">2025</div>
+      <div>
+        <div class="ach-title">Singapore AI Capture The Flag (CTF) - Participant</div>
+        <div class="ach-org">GovTech & Cyber Security Agency of Singapore (CSA Singapore)</div>
+      </div>
+    </div>
+  <div class="achievement-item">
+      <div class="ach-year">2025</div>
+      <div>
+        <div class="ach-title">NUS Built Environment Case Competition (BECC) - Participant</div>
+        <div class="ach-org">National University of Singapore</div>
+      </div>
+    </div>
+    <div class="achievement-item">
+      <div class="ach-year">2024</div>
+      <div>
+        <div class="ach-title">National First Aid Competition — Silver Award</div>
+        <div class="ach-org">Red Cross Youth Singapore</div>
+      </div>
+    </div>
+    <div class="achievement-item">
+      <div class="ach-year">2024</div>
+      <div>
+        <div class="ach-title">Physics Olympiad — Honourable mention</div>
+        <div class="ach-org">17th Singapore Junior Physics Olympiad (SJPO)</div>
+      </div>
+    </div>
+    <div class="achievement-item">
+      <div class="ach-year">2024</div>
+      <div>
+        <div class="ach-title">Red Cross Youth — Warrant Officer</div>
+        <div class="ach-org">Zhenghua Secondary School</div>
+      </div>
+    </div>
+    <div class="achievement-item">
+      <div class="ach-year">2023</div>
+      <div>
+        <div class="ach-title">Academic Excellence in Geography</div>
+        <div class="ach-org">Zhenghua Secondary School</div>
+      </div>
+    </div>
+    <div class="achievement-item">
+      <div class="ach-year">2023</div>
+      <div>
+        <div class="ach-title">Edusave Scholarship</div>
+        <div class="ach-org">Ministry of Education, Singapore</div>
+      </div>
+    </div>
+    <div class="achievement-item">
+      <div class="ach-year">2023</div>
+      <div>
+        <div class="ach-title">First Aid Certification</div>
+        <div class="ach-org">Singapore Red Cross Society</div>
+      </div>
+    </div>
+      <div class="achievement-item">
+      <div class="ach-year">2022</div>
+      <div>
+        <div class="ach-title">Education Merit Award</div>
+        <div class="ach-org">Ministry of Education, Singapore</div>
+      </div>
+    </div>
+          <div class="achievement-item">
+      <div class="ach-year">2022</div>
+      <div>
+        <div class="ach-title">Smoke Free Ambassador Competition - Second Place</div>
+        <div class="ach-org">Singapore Red Cross Society</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- LEADERSHIP -->
+<section id="leadership">
+  <div class="section-label">04 — Leadership</div>
+  <h2 class="section-title">How I show<br>up for others.</h2>
+  <div class="leadership-grid">
+    <div class="leadership-card">
+      <div class="lcard-role">Role // Sergeant</div>
+      <div class="lcard-title">Red Cross Youth — Logistics Lead</div>
+      <div class="lcard-desc">Coordinated logistics for first aid training events with 80+ participants. Managed equipment inventory and briefed volunteers on safety protocols during large-scale school events.</div>
+    </div>
+    <div class="leadership-card">
+      <div class="lcard-role">Role // Founder</div>
+      <div class="lcard-title">School Electronics Interest Group</div>
+      <div class="lcard-desc">Founded and led a student-run electronics tinkering club, organising weekly sessions on soldering, PCB design, and Arduino prototyping for 20+ junior members.</div>
+    </div>
+    <div class="leadership-card">
+      <div class="lcard-role">Role // Mentor</div>
+      <div class="lcard-title">Peer Tutoring Programme — Physics & Maths</div>
+      <div class="lcard-desc">Conducted weekly peer tutoring sessions for Secondary 2 and 3 students struggling with foundational Physics and Mathematics. Developed custom worked examples and visual aids.</div>
+    </div>
+    <div class="leadership-card">
+      <div class="lcard-role">Role // Class Chair</div>
+      <div class="lcard-title">Class & CCA Representative</div>
+      <div class="lcard-desc">Elected class chairman for two consecutive years. Facilitated communication between students and teachers, organised class events, and represented the cohort in school leadership meetings.</div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="section-label">05 — Testimonials</div>
+  <h2 class="section-title">What people<br>say.</h2>
+  <div class="testimonials-grid">
+    <div class="testimonial-card">
+      <p class="testimonial-text">As Zhen wei's form teacher for the past four years, I have had the As Zhen wei's form teacher for the past four years, I have had the privilege of witnessing his strong academic abilities, remarkable independence and motivation. He was able to consistently demonstrate a high level of independence in his approach to learning. He shows a remarkable ability to grasp complex concepts quickly and apply them effectively in both theoretical and practical settings. He approaches every task with enthusiasm and a strong work ethic, always striving for excellence in everything he does. Zhen wei's passion in the Sciences is evident in his active participation during lessons. I have no doubt that Zhen wei's strong work ethic, independence, motivation, and confidence will serve him well in his future academic endeavors. In conclusion, l recommend Zhen wei for admission to the Electrical and Electronic Engineering course.</p>
+      <div class="testimonial-author">Mrs. Koh Ming Hui</div>
+      <div class="testimonial-role">Geography Teacher & Form Teacher, Zhenghua Secondary School</div>
+    </div>
+    <div class="testimonial-card">
+      <p class="testimonial-text">Zhen Wei is a highly motivated and disciplined student who puts in his best effort in all that he
+does. During his time in Red Cross Youth (RCY), he often took the initiative to go beyond his duties in order to ensure the unit's operations went smoothly. With that, he contributed tremendously to the unit's achievement of the Excellent Unit Award (Gold) when he was part of the unit's Executive Committee. His hard work and dedication won the respect of his peers and juniors
+alike, making him a valued member of the unit. In his time with RCY, he was also actively involved in various (unit and HQ) projects and events, allowing him to hone his organisation, problem-solving and communication skills. Time and time
+again, Zhen Wei rose to the occasion and never gave up in his pursuit of excellence. A reflective and keen learner, Zhen Wei also does well in class. He takes charge of his learning and takes pride in producing quality work on time, reflecting a deep sense of responsibility and good time management skills. Zhen Wei is also not one to shy away from challenges - he is
+determined and has a can-do attitude, which is really heartening to see in students these days. Overall, Zhen Wei is a well-rounded student who will definitely add value to the school and
+faculty he chooses to enroll in.</p>
+      <div class="testimonial-author">Ms. Amerlyn Ong</div>
+      <div class="testimonial-role">Red Cross Youth Teacher - in - Charge & English teacher, Zhenghua Secondary</div>
+    </div>
+    <div class="testimonial-card">
+      <p class="testimonial-text">Tog Zhen Wei has demonstrated an impressive level of commitment and dedication to his studies, particularly in the fields of Mathematics and Physics. His keen interest in these subjects is evident in his academic performance and his active participation in class discussions. His passion for STEM-related subjects has been nurtured through Applied Learning modules learnt in his lower secondary school years. This interest has only been further fuelled by his exposure in Education Career Guidance lessons and the Engineering lecturers sharing about the various Engineering pathways during the
+Education Career Guidance Symposium organized by the school. Zhen Weis problem-solving skills and adaptability are particularly noteworthy. These skills have been honed through Mathematics Problem Solving lessons in lower Secondary school, and in Secondary 3, where students are given real-world context problems to discuss and solve. His approach to complex problems is multi-faceted, demonstrating his ability to view issues from various perspectives and come up with
+innovative solutions. His leadership skills are strong, as is his ability to think critically and analytically. Zhen Wei consistently demonstrates an out-of-the-box thinking approach, determined to find solutions to the problems assigned. His responsibility and punctuality are commendable,
+always completing tasks within the given time frame. Work on further developing these strengths, Zhen Wei will certainly continue to excel in his studies and future career. His determination, responsibility, and analytical abilities are assets that will serve him well in his pursuit of further studies in engineering or related
+fields. Overall, Tog Zhen Wei is a remarkable student who has demonstrated a high level of intellect, determination, and responsibility. His passion for learning and his commitment to his studies make him an ideal candidate for further studies in the STEM fields. His future is bright, and it is with great confidence that this testimonial is written in support of
+his application.</p>
+      <div class="testimonial-author">Ms. Kwek Co Hui Lynn</div>
+      <div class="testimonial-role">Secondary 3 & 4 Elementary Mathematics Teacher</div>
+    </div>
+    <div class="testimonial-card">
+      <p class="testimonial-text">It is my pleasure to strongly recommend Tog Zhen Wei for a position in Electrical Electronic
+Engineering.
+I am Boo Jia Liang, a Mathematics teacher with 10 years of experience at Zhenghua Secondary School. Throughout my teaching career, I have had the opportunity to work with many students, and Zhen
+Wei stands out as an exceptional individual with great potential. As Zhen Wei's Additional Mathematics teacher for the past one and a half years, I have consistently observed his exemplary qualities, including perseverance, analytical thinking, critical problem-solving skills, and a unique ability for out-of-the-box thinking. Zhen Wei approaches complex mathematical problems with a methodical and innovative mindset, often finding unique solutions that go beyond the typical approach. His dedication to mastering the subject is evident through his consistent
+performance and willingness to tackle challenging problems with determination. Zhen Wei's commitment to academic excellence is matched by his genuine concern for his peers. He regularly assists classmates who struggle with Additional Mathematics, demonstrating both patience and effective teaching skills. His ability to explain complex concepts in an accessible manner has
+earned him the admiration and respect of his peers.
+In addition to his academic and interpersonal skills, Zhen Wei is a responsible and punctual individual. He consistently meets deadlines and manages his time effectively, balancing his academic
+responsibilities with extracurricular activities. Given Zhen Wei's aptitude for analytical thinking, his dedication to his studies, his ability to work effectively with others, and his strong sense of responsibility, I am confident that he will excel in Electrical Electronic Engineering. His unique combination of skills and personal qualities makes him a
+valuable asset to any institution, and I believe he will bring positive contributions to your program. If you require further information or specific examples of Zhen Wei's achievements and capabilities, please do not hesitate to contact me at 9437 5031. This recommendation provides just a glimpse of Zhen Wei's talents and accomplishments, and I would be more than happy to elaborate on my
+experiences working with him.</p>
+      <div class="testimonial-author">Mr. Boo Jia Liang</div>
+      <div class="testimonial-role">Additional Mathematics Teacher</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner">
+    <div class="contact-pre">// Let's Connect</div>
+    <h2 class="contact-title">Ready to build something great?</h2>
+    <p class="contact-sub">Whether it's a project collaboration, engineering opportunity, or just a conversation about tech — I'm always open to connecting.</p>
+    <a href="mailto:togzw12@gmail.com" class="contact-email">
+      <span>⚡</span>
+      togzw12@gmail.com
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-copy">© 2024 Tog Zhen Wei — Built with curiosity.</div>
+  <div class="footer-links">
+    <a href="#hero">Top</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </div>
+</footer>
+
+<script>
+  // Animate skill bars on scroll
+  const fills = document.querySelectorAll('.skill-fill');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        const w = parseFloat(el.dataset.width);
+        el.style.transform = `scaleX(${w})`;
+        el.classList.add('animate');
+      }
+    });
+  }, { threshold: 0.3 });
+  fills.forEach(f => observer.observe(f));
+
+  // Typewriter effect for hero tag
+  const tag = document.querySelector('.hero-tag');
+  const tagText = '// Student Engineer & Maker';
+  tag.textContent = '';
+  let i = 0;
+  setTimeout(() => {
+    const interval = setInterval(() => {
+      if (i <= tagText.length) {
+        tag.innerHTML = tagText.slice(0, i) + '<span class="cursor"></span>';
+        i++;
+      } else {
+        clearInterval(interval);
+        tag.innerHTML = tagText;
+      }
+    }, 40);
+  }, 600);
+
+  // Smooth nav highlight
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 120) current = s.id;
+    });
+    navLinks.forEach(link => {
+      link.style.color = link.getAttribute('href') === `#${current}` ? 'var(--accent)' : '';
+    });
+  });
+
+  // Fade-in sections on scroll
+  const sectionEls = document.querySelectorAll('#about, #projects, #achievements, #leadership, #testimonials, #contact');
+  const fadeObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.08 });
+  sectionEls.forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(30px)';
+    el.style.transition = 'opacity 0.9s ease, transform 0.9s ease';
+    fadeObserver.observe(el);
+  });
+</script>
+</body>
+</html>
