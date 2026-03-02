@@ -501,6 +501,14 @@
     letter-spacing: 0.1em;
     text-transform: uppercase;
   }
+ .ach-text {
+  font-family: var(--body);
+  font-size: 0.875rem;
+  color: var(--text);
+  line-height: 1.7;
+  margin-top: 0.8rem;
+ }
+
 
   /* ── LEADERSHIP ── */
   #leadership { border-top: 1px solid var(--border); }
@@ -551,6 +559,52 @@
     line-height: 1.7;
   }
 
+/* ── SERVICE ── */
+#service { 
+  border-top: 1px solid var(--border); 
+}
+
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.service-card {
+  border: 1px solid var(--border);
+  padding: 2rem;
+  transition: border-color 0.3s, transform 0.3s;
+  background: var(--surface);
+}
+
+.service-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-4px);
+}
+
+.service-title {
+  font-family: var(--display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 0.6rem;
+}
+
+.service-org {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  color: var(--accent);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.8rem;
+}
+
+.service-desc {
+  font-family: var(--body);
+  font-size: 0.9rem;
+  color: var(--text);
+  line-height: 1.7;
+}
+
   /* ── TESTIMONIALS ── */
   #testimonials { border-top: 1px solid var(--border); }
 
@@ -578,8 +632,9 @@
   }
 
   .testimonial-text {
+    font-family: var(--body);
     font-size: 0.95rem;
-    color: #8b95a8;
+    color: var(--text);
     line-height: 1.8;
     margin-bottom: 1.5rem;
     font-style: italic;
@@ -595,7 +650,7 @@
   .testimonial-role {
     font-family: var(--mono);
     font-size: 0.65rem;
-    color: var(--muted);
+    color: var(--text);
     letter-spacing: 0.08em;
     margin-top: 0.2rem;
   }
@@ -759,6 +814,7 @@
     <li><a href="#about">About</a></li>
     <li><a href="#projects">Projects</a></li>
     <li><a href="#achievements">Achievements</a></li>
+    <li><a href="#service">Service</a></li>
     <li><a href="#leadership">Leadership</a></li>
     <li><a href="#testimonials">Testimonials</a></li>
   </ul>
@@ -985,6 +1041,7 @@
       <div>
         <div class="ach-title">National First Aid Competition — Silver Award</div>
         <div class="ach-org">Red Cross Youth Singapore</div>
+        <div class="ach-text">My dedication to service extends beyond academics. In the 2024 National First Aid Competition, my team and I rose to the challenge, earning the Silver Award. This experience honed my critical thinking and problem-solving skills under pressure, as we responded to simulated emergencies requiring quick and precise first aid procedures. The Silver Award reflects not only my own skills but also the strong teamwork and collaboration within our team.</div>
       </div>
     </div>
     <div class="achievement-item">
@@ -992,6 +1049,7 @@
       <div>
         <div class="ach-title">Physics Olympiad — Honourable mention</div>
         <div class="ach-org">17th Singapore Junior Physics Olympiad (SJPO)</div>
+        <div class="ach-text">Participating in the Physics Olympiad in 2024 was an incredibly challenging yet rewarding experience. As the only combined science student from my school, I faced a unique disadvantage compared to my peers who had studied pure science. The competition demanded a deep understanding of complex concepts that went beyond the scope of my usual coursework. However, through perseverance and focused effort, I was able to overcome these obstacles. The experience pushed me to think critically and creatively, ultimately allowing me to rise to the occasion.</div>
       </div>
     </div>
     <div class="achievement-item">
@@ -999,6 +1057,7 @@
       <div>
         <div class="ach-title">Red Cross Youth — Warrant Officer</div>
         <div class="ach-org">Zhenghua Secondary School</div>
+        <div class="ach-text">Becoming a Warrant Officer in the Red Cross in 2024 is a prestigious achievement that demonstrates outstanding dedication and leadership. This rank reflects a deep commitment to the organisation's humanitarian mission and requires exceptional skills and knowledge. Warrant Officers play a vital role in guiding and supporting cadets, ensuring high standards of care for those in need. Achieving this rank is a testament to my ability to inspire others and make a meaningful impact on the world.</div>
       </div>
     </div>
     <div class="achievement-item">
@@ -1006,6 +1065,7 @@
       <div>
         <div class="ach-title">Academic Excellence in Geography</div>
         <div class="ach-org">Zhenghua Secondary School</div>
+        <div class="ach-text">In 2023, I excelled in this subject, achieving a mark that placed me amongst the top performers in my cohort. This academic achievement reflects my deep curiosity about the world's landscapes, cultures, and how human and physical processes interact. It wasn't just about memorisation; I actively sought to understand the complex relationships that shape our planet. This success fuelled my enthusiasm for geography, and I'm eager to continue exploring this fascinating subject further.</div>
       </div>
     </div>
     <div class="achievement-item">
@@ -1013,6 +1073,7 @@
       <div>
         <div class="ach-title">Edusave Scholarship</div>
         <div class="ach-org">Ministry of Education, Singapore</div>
+          <div class="ach-text">My dedication to academics has consistently placed me among the top performers.  This drive is evident in my rankings, where I've secured a spot within the top 10% of my cohort. This achievement isn't just a mark on a report card – it reflects my commitment to understanding concepts deeply and pushing myself to excel.</div>
       </div>
     </div>
     <div class="achievement-item">
@@ -1020,6 +1081,7 @@
       <div>
         <div class="ach-title">First Aid Certification</div>
         <div class="ach-org">Singapore Red Cross Society</div>
+        <div class="ach-text">Completing the First Aid GMW (Gold Modular Workshop) certification shows my expertise in life-saving practices. From foundational skills to advanced medical interventions, this achievement underscores my commitment to being an adaptable first responder. The GMW certification is a symbol of readiness to handle diverse emergencies with precision and compassion, reflecting my dedication to ensuring the safety and well-being of those in need.</div>
       </div>
     </div>
       <div class="achievement-item">
@@ -1027,6 +1089,7 @@
       <div>
         <div class="ach-title">Education Merit Award</div>
         <div class="ach-org">Ministry of Education, Singapore</div>
+        <div class="ach-text">Attaining the Education Merit Award is a testament to the dedication to academic excellence. This recognition celebrates not only my achievements in the classroom but also my commitment to continuous learning and pursuit of knowledge.</div>
       </div>
     </div>
           <div class="achievement-item">
@@ -1034,6 +1097,90 @@
       <div>
         <div class="ach-title">Smoke Free Ambassador Competition - Second Place</div>
         <div class="ach-org">Singapore Red Cross Society</div>
+        <div class="ach-text">It was a tough task to come in second in the Smoke-free Ambassador competition, especially up against institutions like Raffles. It was no minor accomplishment to overcome such fierce opposition; it demonstrated our tenacity and fortitude. Even if things were difficult, we overcame them and took pride in coming in second.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SERVICE -->
+<section id="service">
+  <div class="section-label">04 — Service</div>
+  <h2 class="section-title">Giving back<br>to the community.</h2>
+
+  <div class="service-grid">
+
+    <div class="service-card">
+      <div class="service-title">Children Youth Family Bloom & Zoom</div>
+      <div class="service-org">Youth Corps Singapore</div>
+      <span class="service-year">2025</span> 
+      <div class="service-desc">
+     filler
+      </div>
+    </div>
+
+            <div class="service-card">
+      <div class="service-title">First Aider for National Day Sports Event</div>
+      <div class="service-org">Zhenghua Secondary School</div>
+      <span class="service-year">2024</span> 
+      <div class="service-desc">
+        filler
+      </div>
+    </div>
+
+    <div class="service-card">
+      <div class="service-title">Food Rescue Distribution</div>
+      <div class="service-org">Zhenghua Youth Network</div>
+      <span class="service-year">2023 - 2024</span> 
+      <div class="service-desc">
+      In this event, our responsibility extends to collaborating with the local youth network to organize and facilitate this event. We actively participate in the provision of basic food supplies to our neighbors, guaranteeing a smooth operation that takes care of urgent requirements.
+      </div>
+    </div>
+
+      <div class="service-card">
+      <div class="service-title">Visiting the Red Cross Home for disabled</div>
+      <div class="service-org">Singapore Red Cross Society</div>
+      <span class="service-year">2023</span> 
+      <div class="service-desc">
+       filler
+      </div>
+    </div>
+
+      <div class="service-card">
+      <div class="service-title">Adhoc Volunteering with NLB</div>
+      <div class="service-org">National Library Board</div>
+      <span class="service-year">2023</span> 
+      <div class="service-desc">
+       In this event, our role is to ensure the seamless functioning of the library. We contribute by arranging books for easy accessibility, ensuring patrons can locate their desired reads. We also assist users with a variety of library services, improving their overall experience and creating a friendly, well-organized atmosphere.
+      </div>
+    </div>
+
+    <div class="service-card">
+      <div class="service-title">VIA (Elderly)</div>
+      <div class="service-org">Zhenghua Secondary School</div>
+      <span class="service-year">2023</span> 
+      <div class="service-desc">
+        In this activity, we would be tasked to find out more about the lives of the eldery in Singapore, or spend time with them. We also have an interview with them to learn more about the problems Singapore's older population faces. My research and experiences with the elderly have improved my ability to empathize with and comprehend them because I am aware of their struggles.
+      </div>
+    </div>
+
+
+        <div class="service-card">
+      <div class="service-title">VIA Disability Task</div>
+      <div class="service-org">Zhenghua Secondary School</div>
+      <span class="service-year">2022</span> 
+      <div class="service-desc">
+        In this activity, we would have to research more about a certain disability of our choice and find out the common myths and misconception about the disability. We would also look for ways to improve the environment so that these people feel more welcome. This helps us understand the daily struggles faced by individuals with disabilities.
+      </div>
+    </div>
+
+            <div class="service-card">
+      <div class="service-title">Famchamps Bingo</div>
+      <div class="service-org">Zhenghua Secondary School</div>
+      <span class="service-year">2021</span> 
+      <div class="service-desc">
+        In this activity, we would have to finish the series of tasks in this activity in order to accrue a specific quantity of stars. Every duty would involve some sort of activity that would call on us to assist with household tasks or to strengthen our bonds with the family.
       </div>
     </div>
 
@@ -1042,35 +1189,24 @@
 
 <!-- LEADERSHIP -->
 <section id="leadership">
-  <div class="section-label">04 — Leadership</div>
+  <div class="section-label">05 — Leadership</div>
   <h2 class="section-title">How I show<br>up for others.</h2>
   <div class="leadership-grid">
     <div class="leadership-card">
-      <div class="lcard-role">Role // Sergeant</div>
-      <div class="lcard-title">Red Cross Youth — Logistics Lead</div>
-      <div class="lcard-desc">Coordinated logistics for first aid training events with 80+ participants. Managed equipment inventory and briefed volunteers on safety protocols during large-scale school events.</div>
+      <div class="lcard-role">Role // Vice Chairperson</div>
+      <div class="lcard-title">Red Cross Youth — Head of Footdrill & Logistics</div>
+      <div class="lcard-text">I have served as a Red Cross Cadet at Zhenghua Secondary School for four years, taking on key leadership responsibilities throughout my journey. I led the execution of foot drill exercises and conducted structured physical training sessions, ensuring discipline, coordination, and high standards of performance within the unit. I also oversaw media-related operations and coordinated logistics for first aid training events involving the whole Zhenghua Red Cross Youth. In addition, I managed equipment inventory and briefed my juniors on safety protocols during large-scale school events, ensuring smooth operations and a strong culture of accountability and preparedness.</div>
     </div>
     <div class="leadership-card">
-      <div class="lcard-role">Role // Founder</div>
-      <div class="lcard-title">School Electronics Interest Group</div>
-      <div class="lcard-desc">Founded and led a student-run electronics tinkering club, organising weekly sessions on soldering, PCB design, and Arduino prototyping for 20+ junior members.</div>
-    </div>
-    <div class="leadership-card">
-      <div class="lcard-role">Role // Mentor</div>
-      <div class="lcard-title">Peer Tutoring Programme — Physics & Maths</div>
-      <div class="lcard-desc">Conducted weekly peer tutoring sessions for Secondary 2 and 3 students struggling with foundational Physics and Mathematics. Developed custom worked examples and visual aids.</div>
-    </div>
-    <div class="leadership-card">
-      <div class="lcard-role">Role // Class Chair</div>
-      <div class="lcard-title">Class & CCA Representative</div>
-      <div class="lcard-desc">Elected class chairman for two consecutive years. Facilitated communication between students and teachers, organised class events, and represented the cohort in school leadership meetings.</div>
-    </div>
+      <div class="lcard-role">Role // Peer Support Leader</div>
+      <div class="lcard-title">Class Committee</div>
+      <div class="lcard-text">Elected Peer Support Leader for four consecutive years. During my time in Zhenghua, I have had the privilege of serving as a Peer Support Leader within my school community. Throughout this time, I have actively engaged in a wide array of school events, including taking on the role of hosting several of classroom related events. In my capacity as a Peer Support Leader, my core mission has been to provide a caring and empathetic presence for my fellow classmates and schoolmates who may be navigating various mental health issues. I believe in the power of active listening and offering a helping hand to those who need it, and I am committed to promoting mental well-being within our school community.</div>
   </div>
 </section>
 
 <!-- TESTIMONIALS -->
 <section id="testimonials">
-  <div class="section-label">05 — Testimonials</div>
+  <div class="section-label">06 — Testimonials</div>
   <h2 class="section-title">What people<br>say.</h2>
   <div class="testimonials-grid">
     <div class="testimonial-card">
