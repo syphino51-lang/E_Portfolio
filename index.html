@@ -847,16 +847,65 @@
 
   /* ── MOBILE ── */
   @media (max-width: 768px) {
+ /* Nav */
     nav { padding: 1rem 1.5rem; }
     .nav-links { display: none; }
-    section, #hero, #contact { padding: 4rem 1.5rem; }
-    footer { padding: 1.5rem; flex-direction: column; gap: 1rem; text-align: center; }
-    .about-grid,
-    .leadership-grid,
-    .testimonials-grid { grid-template-columns: 1fr; }
-    .projects-grid { grid-template-columns: 1fr; }
+    .nav-cta { font-size: 0.7rem; padding: 0.4rem 0.8rem; }
+
+    /* General */
+    section, #hero, #contact { padding: 3.5rem 1.2rem; }
+    .section-title { font-size: clamp(1.8rem, 6vw, 2.5rem); margin-bottom: 2rem; }
+
+    /* Hero */
+    #hero { padding: 0 1.2rem; }
     .hero-name { font-size: clamp(2.8rem, 10vw, 5rem); }
-    .status-badge { right: 1.5rem; bottom: 2rem; }
+    .hero-title { font-size: 0.75rem; letter-spacing: 0.08em; }
+    .hero-desc { font-size: 0.95rem; }
+    .hero-actions { flex-direction: column; gap: 0.75rem; }
+    .btn-primary, .btn-ghost { text-align: center; padding: 0.85rem 1.5rem; }
+    .status-badge { right: 1.2rem; bottom: 1.5rem; font-size: 0.65rem; }
+
+    /* About */
+    .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .about-stats { grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .stat-num { font-size: 1.8rem; }
+
+    /* Projects — 1 column */
+    .projects-grid { grid-template-columns: 1fr; gap: 1rem; }
+
+    /* Achievements — year stacks above content */
+    .achievement-item {
+      grid-template-columns: 1fr;
+      gap: 0.5rem;
+      padding: 1.5rem 0;
+    }
+    .ach-year { padding-top: 0; }
+    .ach-title { font-size: 0.95rem; }
+    .achievement-img { height: 180px; }
+
+    /* Service — 2 columns, drops to 1 on very small screens */
+    .service-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+    .service-img { height: 140px; }
+    .service-title { font-size: 0.95rem; }
+    .service-desc { font-size: 0.8rem; }
+
+    /* Leadership — 1 column */
+    .leadership-grid { grid-template-columns: 1fr; }
+    .leadership-img { height: 200px; }
+
+    /* Testimonials — 1 column */
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .testimonial-text { font-size: 0.875rem; }
+
+    /* Footer */
+    footer { padding: 1.5rem; flex-direction: column; gap: 1rem; text-align: center; }
+  }
+
+  /* Very small screens — service drops to 1 column */
+  @media (max-width: 480px) {
+    .service-grid { grid-template-columns: 1fr; }
+    .hero-actions { width: 100%; }
+    .btn-primary, .btn-ghost { width: 100%; justify-content: center; }
   }
 </style>
 </head>
