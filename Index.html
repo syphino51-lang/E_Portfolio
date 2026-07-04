@@ -1691,12 +1691,7 @@ experiences working with him.</p>
     link.addEventListener('click', closeMenu);
   });
 
-  // ── DETAIL PANELS ──
-function openDetail(id) {
-    document.getElementById(id).classList.add('active');
-    document.body.style.overflow = 'hidden';
-    history.pushState({ detail: id }, '', '#' + id);
-  }
+
 let savedScrollPos = 0;
 
   function closeDetail(id) {
@@ -1705,7 +1700,7 @@ let savedScrollPos = 0;
     if (location.hash === '#' + id) history.back();
     setTimeout(() => window.scrollTo(0, savedScrollPos), 80);
   }
-  window.addEventListener('popstate', function(e) {
+window.addEventListener('popstate', function(e) {
     document.querySelectorAll('.detail-overlay.active').forEach(o => {
       o.classList.remove('active');
       document.body.style.overflow = '';
@@ -1952,7 +1947,6 @@ let savedScrollPos = 0;
     <div class="detail-tag">// ACHIEVEMENT // 2025</div>
     <div class="detail-title">NUS Built Environment Case Competition</div>
     <div class="detail-org">National University of Singapore</div>
-    <img src="NAISC-2026-COP_NAISC-2026-PARTICIPATION_Tog-Zhen-Wei_page-0001.jpg" alt="NUS SYNAPXE IMDA AI Innovation Challenge" class="detail-img">
     <div class="detail-body">
       <p>Participating in the NUS Built Environment Case Competition allowed me to apply both online research data and knowledge gained from geography studies to develop a practical and thoughtful solution idea.</p>
       <p>The competition required analytical thinking to interpret environmental and urban-related information, as well as creativity in translating that understanding into a viable proposal.</p>
