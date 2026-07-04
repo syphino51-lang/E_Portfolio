@@ -1692,21 +1692,19 @@ experiences working with him.</p>
   });
 
 
-let savedScrollPos = 0;
+  let savedScrollPos = 0;
+
+  function openDetail(id) {
+    savedScrollPos = window.scrollY;
+    document.getElementById(id).classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
 
   function closeDetail(id) {
     document.getElementById(id).classList.remove('active');
     document.body.style.overflow = '';
-    if (location.hash === '#' + id) history.back();
-    setTimeout(() => window.scrollTo(0, savedScrollPos), 80);
+    setTimeout(() => window.scrollTo(0, savedScrollPos), 50);
   }
-window.addEventListener('popstate', function(e) {
-    document.querySelectorAll('.detail-overlay.active').forEach(o => {
-      o.classList.remove('active');
-      document.body.style.overflow = '';
-    });
-    setTimeout(() => window.scrollTo(0, savedScrollPos), 80);
-  });
   // Close on overlay click
   document.querySelectorAll('.detail-overlay').forEach(overlay => {
     overlay.addEventListener('click', function(e) {
