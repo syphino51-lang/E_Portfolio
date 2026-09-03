@@ -8,13 +8,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #0a0c0f;
-    --surface: #111318;
-    --border: #1e2330;
-    --accent: #00e5ff;
+    --bg: #f4f6fb;
+    --surface: #ffffff;
+    --border: #dde1ed;
+    --accent: #0077cc;
     --accent2: #ff6b35;
-    --text: #e8ecf0;
-    --muted: #5a6275;
+    --text: #1a1d27;
+    --muted: #7a8399;
     --mono: 'Share Tech Mono', monospace;
     --display: 'Syne', sans-serif;
     --body: 'DM Sans', sans-serif;
@@ -69,7 +69,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 1.2rem 4rem;
-    background: rgba(10, 12, 15, 0.85);
+    background: rgba(244, 246, 251, 0.92);
     backdrop-filter: blur(16px);
     border-bottom: 1px solid var(--border);
   }
@@ -181,7 +181,7 @@
 
   .hero-desc {
     font-size: 1.05rem;
-    color: #8b95a8;
+    color: #4a5568;
     max-width: 520px;
     margin-top: 1.5rem;
     line-height: 1.8;
@@ -301,7 +301,7 @@
   }
 
   .about-text p {
-    color: #8b95a8;
+    color: #4a5568;
     margin-bottom: 1.2rem;
     font-size: 1rem;
   }
@@ -407,7 +407,7 @@
     transition: background 0.3s;
     border: 1px solid var(--border);
   }
-  .project-card:hover { background: #161a22; border-color: #2a3045; }
+  .project-card:hover { background: #e8ecf5; border-color: #c5cce0; }
   .project-card:hover .project-arrow { transform: translate(4px, -4px); color: var(--accent); }
 
   .project-num {
@@ -953,7 +953,7 @@
   .detail-body {
     font-family: var(--body);
     font-size: 0.975rem;
-    color: #8b95a8;
+    color: #4a5568;
     line-height: 1.85;
   }
   .detail-body p { margin-bottom: 1.2rem; }
@@ -1004,7 +1004,7 @@
     left: -280px;
     width: 260px;
     height: 100vh;
-    background: var(--surface);
+    background: #ffffff;
     border-right: 1px solid var(--border);
     z-index: 160;
     padding: 5rem 2rem 2rem;
@@ -1107,22 +1107,22 @@
   <svg viewBox="0 0 1400 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
     <defs>
       <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
-        <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#00e5ff" stroke-width="0.5"/>
+        <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#0077cc" stroke-width="0.5"/>
       </pattern>
     </defs>
     <rect width="100%" height="100%" fill="url(#grid)"/>
     <!-- circuit traces -->
-    <path d="M 0 300 H 200 V 150 H 500 V 300 H 700" fill="none" stroke="#00e5ff" stroke-width="1.5"/>
-    <path d="M 700 300 H 900 V 450 H 1100 V 600 H 1400" fill="none" stroke="#00e5ff" stroke-width="1.5"/>
+    <path d="M 0 300 H 200 V 150 H 500 V 300 H 700" fill="none" stroke="#0077cc" stroke-width="1.5"/>
+    <path d="M 700 300 H 900 V 450 H 1100 V 600 H 1400" fill="none" stroke="#0077cc" stroke-width="1.5"/>
     <path d="M 0 600 H 300 V 750 H 600" fill="none" stroke="#ff6b35" stroke-width="1.5"/>
     <path d="M 1400 200 H 1200 V 400 H 1000 V 200 H 800" fill="none" stroke="#ff6b35" stroke-width="1"/>
     <!-- nodes -->
-    <circle cx="200" cy="300" r="4" fill="none" stroke="#00e5ff" stroke-width="1.5"/>
-    <circle cx="500" cy="300" r="4" fill="none" stroke="#00e5ff" stroke-width="1.5"/>
-    <circle cx="900" cy="450" r="4" fill="none" stroke="#00e5ff" stroke-width="1.5"/>
+    <circle cx="200" cy="300" r="4" fill="none" stroke="#0077cc" stroke-width="1.5"/>
+    <circle cx="500" cy="300" r="4" fill="none" stroke="#0077cc" stroke-width="1.5"/>
+    <circle cx="900" cy="450" r="4" fill="none" stroke="#0077cc" stroke-width="1.5"/>
     <circle cx="300" cy="600" r="4" fill="none" stroke="#ff6b35" stroke-width="1.5"/>
     <circle cx="1200" cy="400" r="4" fill="none" stroke="#ff6b35" stroke-width="1.5"/>
-    <circle cx="700" cy="300" r="6" fill="#00e5ff" opacity="0.3"/>
+    <circle cx="700" cy="300" r="6" fill="#0077cc" opacity="0.3"/>
     <circle cx="600" cy="750" r="6" fill="#ff6b35" opacity="0.3"/>
   </svg>
 </div>
@@ -1520,6 +1520,7 @@ Beyond academics, my dedication to service was reflected in earning the Silver A
   <div class="leadership-grid">
 <div class="leadership-card">
       <img src="IMG_3143%202.jpg" alt="Leadership" class="service-img">
+      <div class="lcard-role">Role // Head of Footdrill & Logistics</div>
       <div class="lcard-title">Red Cross Youth — Head of Footdrill & Logistics</div>
       <div class="lcard-text">As a Red Cross Cadet at Zhenghua Secondary School for four years, I took on key leadership responsibilities including overseeing planning decisions, coordinating events, and ensuring operational readiness. This experience strengthened my leadership, decision-making, and accountability, reflecting my commitment to contributing meaningfully in a team-oriented environment.</div>
       <button class="view-project-btn" onclick="openDetail('detail-rcy')">View Details ↗</button>
@@ -1691,32 +1692,19 @@ experiences working with him.</p>
   });
 
   // ── DETAIL PANELS ──
-function openDetail(id) {
-    document.getElementById(id).classList.add('active');
-    document.body.style.overflow = 'hidden';
-    history.pushState({ detail: id }, '', '#' + id);
-  }
-let savedScrollPos = 0;
+  let savedScrollPos = 0;
 
-  function closeDetail(id) {
-    document.getElementById(id).classList.remove('active');
-    document.body.style.overflow = '';
-    if (location.hash === '#' + id) history.back();
-    setTimeout(() => window.scrollTo(0, savedScrollPos), 80);
-  }
   function openDetail(id) {
     savedScrollPos = window.scrollY;
     document.getElementById(id).classList.add('active');
     document.body.style.overflow = 'hidden';
-    history.pushState({ detail: id }, '', '#' + id);
   }
-  window.addEventListener('popstate', function(e) {
-    document.querySelectorAll('.detail-overlay.active').forEach(o => {
-      o.classList.remove('active');
-      document.body.style.overflow = '';
-    });
-    setTimeout(() => window.scrollTo(0, savedScrollPos), 80);
-  });
+
+  function closeDetail(id) {
+    document.getElementById(id).classList.remove('active');
+    document.body.style.overflow = '';
+    setTimeout(() => window.scrollTo(0, savedScrollPos), 50);
+  }
   // Close on overlay click
   document.querySelectorAll('.detail-overlay').forEach(overlay => {
     overlay.addEventListener('click', function(e) {
@@ -1805,11 +1793,11 @@ let savedScrollPos = 0;
   <div class="detail-panel">
     <button class="detail-back" onclick="closeDetail('detail-rcy')">← Back to Portfolio</button>
     <div class="detail-tag">// LEADERSHIP // RED CROSS YOUTH</div>
-    <div class="detail-title">Head of Footdrill & Logistics</div>
+    <div class="detail-title">Vice Chairperson — Head of Footdrill & Logistics</div>
     <div class="detail-org">Zhenghua Secondary School Red Cross Youth</div>
     <img src="IMG_3411.jpg" alt="Red Cross Leadership" class="detail-img">
     <div class="detail-body">
-      <p>Over four years as a Red Cross Cadet at Zhenghua Secondary School, I progressively took on greater leadership responsibility, culminating in the role of Head of Footdrill and Media</p>
+      <p>Over four years as a Red Cross Cadet at Zhenghua Secondary School, I progressively took on greater leadership responsibility, culminating in the role of Vice Chairperson with oversight of Footdrill and Logistics.</p>
       <p>As Head of Footdrill, I planned and led structured drill sessions, maintaining high standards of discipline, precision, and team coordination. This required consistency, patience, and the ability to coach peers with different learning paces.</p>
       <p>On the logistics side, I coordinated equipment, managed resources, and briefed junior members on safety protocols for large-scale events — developing strong organisational and communication skills under real operational conditions.</p>
       <p>One of the highlights of my tenure was contributing to the unit's achievement of the Excellent Unit Award (Gold), a recognition that reflects the collective effort and high standards maintained across the entire unit.</p>
