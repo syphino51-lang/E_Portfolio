@@ -574,6 +574,41 @@
   margin-top: 0.8rem;
  }
 
+  /* achievements show-more toggle */
+  #achievements-hidden {
+    display: none;
+  }
+  #achievements-hidden.show {
+    display: block;
+  }
+
+  .achievements-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    padding: 0.7rem 1.5rem;
+    margin-top: 2rem;
+    cursor: pointer;
+    background: transparent;
+    transition: background 0.2s, color 0.2s;
+  }
+  .achievements-toggle:hover {
+    background: var(--accent);
+    color: var(--bg);
+  }
+  .achievements-toggle .toggle-arrow {
+    transition: transform 0.3s;
+    display: inline-block;
+  }
+  .achievements-toggle.open .toggle-arrow {
+    transform: rotate(180deg);
+  }
 
   /* ── LEADERSHIP ── */
   #leadership { border-top: 1px solid var(--border); }
@@ -1108,6 +1143,7 @@
     .btn-primary, .btn-ghost { width: 100%; justify-content: center; }
     .detail-panel { margin: 1rem; padding: 1.5rem; }
     .img-grid { grid-template-columns: 1fr !important; }
+  }
 </style>
 </head>
 <body>
@@ -1278,7 +1314,7 @@
    <div class="project-card" onclick="openDetail('detail-robot')" style="cursor:pointer;">
       <div class="project-num">PROJECT // 002</div>
       <span class="project-icon">🤖</span>
-      <div class="project-name">Line-Following Robot</div>
+      <div class="project-name">Agricultural Monitoring Bot</div>
       <div class="project-desc">A collaborative project to design and build an autonomous robot capable of following a predefined path using sensors and programmed control logic. Additional sensors were integrated for potential agricultural monitoring and automation applications.</div>
       <div class="project-tags">
         <span class="tag2">Arduino</span>
@@ -1310,7 +1346,10 @@
   <div class="section-label">03 — Achievements</div>
   <h2 class="section-title">Milestones<br>&amp; recognition.</h2>
   <div class="achievements-list">
-          <div class="achievement-item">
+
+    <!-- ═══ VISIBLE BY DEFAULT: most significant achievements ═══ -->
+
+    <div class="achievement-item">
       <div class="ach-year">2026</div>
       <div>
         <img src="119A5649.jpg" alt="DHR" class="achievement-img">
@@ -1320,7 +1359,8 @@
         <button class="view-project-btn" onclick="openDetail('detail-DHR')">View Details ↗</button>
       </div>
     </div>
-          <div class="achievement-item">
+
+    <div class="achievement-item">
       <div class="ach-year">2026</div>
       <div>
         <img src="NUS SYNAPXE IMDA AI Innovation Challenge 2026 Participant Cert_Part130_page-0001.jpg" alt="NUS - SYNAPXE - IMDA AI Innovation Challenge" class="achievement2-img">
@@ -1330,16 +1370,8 @@
         <button class="view-project-btn" onclick="openDetail('detail-nusai')">View Details ↗</button>
       </div>
     </div>
-      <div class="achievement-item">
-      <div class="ach-year">2026</div>
-      <div>
-        <div class="ach-title">Tan Kah Kee Young Inventors' Award (TKKYIA) - Participant</div>
-        <div class="ach-org">Singapore Tan Kah Kee Foundation</div>
-        <div class="ach-text">Participating in the Tan Kah Kee Young Inventors' Award, I developed an innovation focused on electrical or electronic healthcare applications. My project addressed challenges linked to Singapore’s ageing population by exploring how technology could enhance health monitoring and care. This experience improved my ability to identify real-world problems, think creatively, and apply scientific ideas in practical ways, reflecting my interest in using innovation to benefit society.</div>
-        <button class="view-project-btn" onclick="openDetail('detail-tkkyia')">View Details ↗</button>
-      </div>
-    </div>
-      <div class="achievement-item">
+
+    <div class="achievement-item">
       <div class="ach-year">2025</div>
       <div>
         <img src="IMG_2502.jpg" alt="Singapore AI Capture The Flag (CTF)" class="achievement2-img">
@@ -1349,15 +1381,7 @@
         <button class="view-project-btn" onclick="openDetail('detail-ctf')">View Details ↗</button>
       </div>
     </div>
-  <div class="achievement-item">
-      <div class="ach-year">2025</div>
-      <div>
-        <div class="ach-title">NUS Built Environment Case Competition (BECC) - Participant</div>
-        <div class="ach-org">National University of Singapore</div>
-        <div class="ach-text">Participating in the NUS Built Environment Case Competition allowed me to apply research and geography knowledge to develop a practical solution. It required analytical thinking and creativity to interpret data and form a viable proposal. This experience strengthened my ability to work under time pressure, evaluate real-world information, and present ideas clearly, reflecting my interest in applying academic knowledge to real-world problems.</div>
-        <button class="view-project-btn" onclick="openDetail('detail-becc')">View Details ↗</button>
-      </div>
-    </div>
+
     <div class="achievement-item">
       <div class="ach-year">2024</div>
       <div>
@@ -1369,89 +1393,120 @@ Beyond academics, my dedication to service was reflected in earning the Silver A
         <button class="view-project-btn" onclick="openDetail('detail-firstaid')">View Details ↗</button>
       </div>
     </div>
-    <div class="achievement-item">
-      <div class="ach-year">2024</div>
-      <div>
-        <img src="IMG_2492-2%202.jpg" alt="Physics Olympiad" class="achievement2-img">
-        <div class="ach-title">Physics Olympiad — Honourable mention</div>
-        <div class="ach-org">17th Singapore Junior Physics Olympiad (SJPO)</div>
-        <div class="ach-text">Participating in the 2024 Physics Olympiad was both challenging and rewarding. As my school's only combined science student, I faced a disadvantage against pure science peers, tackling concepts beyond my usual coursework. The experience pushed me to think critically and creatively, and to rise above my limitations.</div>
-        <button class="view-project-btn" onclick="openDetail('detail-physics')">View Details ↗</button>
-      </div>
-    </div>
-    <div class="achievement-item">
-      <div class="ach-year">2024</div>
-      <div>
-        <img src="92a3ea22-30d9-4186-aa14-6e7b7f17a799.JPG" alt="Red Cross Youth — Warrant Officer" class="achievement3-img">
-        <div class="ach-title">Red Cross Youth — Warrant Officer</div>
-        <div class="ach-org">Zhenghua Secondary School</div>
-        <div class="ach-text">Attaining the rank of Warrant Officer in Red Cross Youth, I worked directly alongside the Chairperson and Vice Chairperson to oversee CCA operations, managing responsibilities across logistics, lesson planning, and cadet well-being — strengthening my leadership and organisational skills in a structured, team-oriented environment.</div>
-        <button class="view-project-btn" onclick="openDetail('detail-wo')">View Details ↗</button>
-      </div>
-    </div>
-        <div class="achievement-item">
-      <div class="ach-year">2024</div>
-      <div>
-        <img src="IMG_2497.HEIC" alt="Edusave Scholarship" class="achievement3-img">
-        <div class="ach-title">Edusave Scholarship</div>
-        <div class="ach-org">Ministry of Education</div>
-        <div class="ach-text">Receiving the Edusave Scholarship for being in the top 10 percent of the cohort is a significant academic milestone that reflects consistent discipline and perseverance. This scholarship recognises sustained excellence across subjects and a strong commitment to maintaining high standards in all areas of study. Achieving this distinction required effective time management, resilience, and the ability to perform under pressure. Being awarded the Edusave Scholarship affirms my dedication to academic mastery and my drive to continually challenge myself to perform at my best.</div>
-      </div>
-    </div>
-        <div class="achievement-item">
-      <div class="ach-year">2024</div>
-      <div>
-        <img src="IMG_2497.HEIC" alt="Edusave Award for Achievement, Good Leadership and Service (EAGLES)" class="achievement3-img">
-        <div class="ach-title">Edusave Award for Achievement, Good Leadership and Service (EAGLES)</div>
-        <div class="ach-org">Ministry of Education</div>
-        <div class="ach-text">Receiving the Edusave Award for Achievement, Good Leadership and Service (EAGLES) is a meaningful recognition of both academic commitment and active contribution to the school community. This award reflects consistent performance, responsible leadership, and a genuine dedication to service beyond personal achievement. It signifies my ability to balance responsibilities effectively while contributing positively to the growth and well-being of others. Attaining EAGLES affirms my commitment to striving for excellence with integrity and purpose.</div>
-      </div>
-    </div>
-    <div class="achievement-item">
-      <div class="ach-year">2023</div>
-      <div>
-         <img src="IMG_2496%202.jpg" alt="Academic Excellence in Geography" class="achievement4-img">
-        <div class="ach-title">Academic Excellence in Geography</div>
-        <div class="ach-org">Zhenghua Secondary School</div>
-        <div class="ach-text">In 2023, I excelled in this subject, achieving a mark that placed me amongst the top performers in my cohort. This academic achievement reflects my deep curiosity about the world's landscapes, cultures, and how human and physical processes interact. It wasn't just about memorisation; I actively sought to understand the complex relationships that shape our planet. This success fuelled my enthusiasm for geography, and I'm eager to continue exploring this fascinating subject further.</div>
-      </div>
-    </div>
-    <div class="achievement-item">
-      <div class="ach-year">2023</div>
-      <div>
-        <img src="IMG_2495.HEIC" alt="Edusave Scholarship" class="achievement3-img">
-        <div class="ach-title">Edusave Scholarship</div>
-        <div class="ach-org">Ministry of Education, Singapore</div>
-          <div class="ach-text">My dedication to academics has consistently placed me among the top performers.  This drive is evident in my rankings, where I've secured a spot within the top 10% of my cohort. This achievement isn't just a mark on a report card – it reflects my commitment to understanding concepts deeply and pushing myself to excel.</div>
-      </div>
-    </div>
-    <div class="achievement-item">
-      <div class="ach-year">2023</div>
-      <div>
-        <img src="IMG_2499.jpg" alt="First Aid Certification" class="achievement2-img">
-        <div class="ach-title">First Aid Certification</div>
-        <div class="ach-org">Singapore Red Cross Society</div>
-        <div class="ach-text">Completed the First Aid GMW (Gold Modular Workshop) certification, covering foundational to advanced life-saving skills. Reflects my commitment to being a capable and adaptable first responder in diverse emergency situations.</div>
-      </div>
-    </div>
+
+    <!-- ═══ HIDDEN BY DEFAULT: click "Show More" to reveal ═══ -->
+    <div id="achievements-hidden">
+
+      <!-- ADD NEW ACHIEVEMENTS HERE — just copy an .achievement-item block and edit it -->
+
       <div class="achievement-item">
-      <div class="ach-year">2022</div>
-      <div>
-        <img src="IMG_2494.jpg" alt="Education Merit Award" class="achievement3-img">
-        <div class="ach-title">Education Merit Award</div>
-        <div class="ach-org">Ministry of Education, Singapore</div>
-        <div class="ach-text">Attaining the Education Merit Award is a testament to the dedication to academic excellence. This recognition celebrates not only my achievements in the classroom but also my commitment to continuous learning and pursuit of knowledge.</div>
+        <div class="ach-year">2026</div>
+        <div>
+          <div class="ach-title">Tan Kah Kee Young Inventors' Award (TKKYIA) - Participant</div>
+          <div class="ach-org">Singapore Tan Kah Kee Foundation</div>
+          <div class="ach-text">Participating in the Tan Kah Kee Young Inventors' Award, I developed an innovation focused on electrical or electronic healthcare applications. My project addressed challenges linked to Singapore's ageing population by exploring how technology could enhance health monitoring and care. This experience improved my ability to identify real-world problems, think creatively, and apply scientific ideas in practical ways, reflecting my interest in using innovation to benefit society.</div>
+          <button class="view-project-btn" onclick="openDetail('detail-tkkyia')">View Details ↗</button>
+        </div>
       </div>
-    </div>
-          <div class="achievement-item">
-      <div class="ach-year">2022</div>
-      <div>
-        <img src="IMG_1020%202.jpg" alt="Smoke Free Ambassador Competition - Second Place" class="achievement5-img">
-        <div class="ach-title">Smoke Free Ambassador Competition - Second Place</div>
-        <div class="ach-org">Singapore Red Cross Society</div>
-        <div class="ach-text">It was a tough task to come in second in the Smoke-free Ambassador competition, especially up against institutions like Raffles. It was no minor accomplishment to overcome such fierce opposition; it demonstrated our tenacity and fortitude. Even if things were difficult, we overcame them and took pride in coming in second.</div>
+
+      <div class="achievement-item">
+        <div class="ach-year">2025</div>
+        <div>
+          <div class="ach-title">NUS Built Environment Case Competition (BECC) - Participant</div>
+          <div class="ach-org">National University of Singapore</div>
+          <div class="ach-text">Participating in the NUS Built Environment Case Competition allowed me to apply research and geography knowledge to develop a practical solution. It required analytical thinking and creativity to interpret data and form a viable proposal. This experience strengthened my ability to work under time pressure, evaluate real-world information, and present ideas clearly, reflecting my interest in applying academic knowledge to real-world problems.</div>
+          <button class="view-project-btn" onclick="openDetail('detail-becc')">View Details ↗</button>
+        </div>
       </div>
-    </div>
+
+      <div class="achievement-item">
+        <div class="ach-year">2024</div>
+        <div>
+          <img src="IMG_2492-2%202.jpg" alt="Physics Olympiad" class="achievement2-img">
+          <div class="ach-title">Physics Olympiad — Honourable mention</div>
+          <div class="ach-org">17th Singapore Junior Physics Olympiad (SJPO)</div>
+          <div class="ach-text">Participating in the 2024 Physics Olympiad was both challenging and rewarding. As my school's only combined science student, I faced a disadvantage against pure science peers, tackling concepts beyond my usual coursework. The experience pushed me to think critically and creatively, and to rise above my limitations.</div>
+          <button class="view-project-btn" onclick="openDetail('detail-physics')">View Details ↗</button>
+        </div>
+      </div>
+
+      <div class="achievement-item">
+        <div class="ach-year">2024</div>
+        <div>
+          <img src="92a3ea22-30d9-4186-aa14-6e7b7f17a799.JPG" alt="Red Cross Youth — Warrant Officer" class="achievement3-img">
+          <div class="ach-title">Red Cross Youth — Warrant Officer</div>
+          <div class="ach-org">Zhenghua Secondary School</div>
+          <div class="ach-text">Attaining the rank of Warrant Officer in Red Cross Youth, I worked directly alongside the Chairperson and Vice Chairperson to oversee CCA operations, managing responsibilities across logistics, lesson planning, and cadet well-being — strengthening my leadership and organisational skills in a structured, team-oriented environment.</div>
+          <button class="view-project-btn" onclick="openDetail('detail-wo')">View Details ↗</button>
+        </div>
+      </div>
+
+      <div class="achievement-item">
+        <div class="ach-year">2024</div>
+        <div>
+          <img src="IMG_2497.jpg" alt="Edusave Scholarship & Edusave Award for Achievement, Good Leadership and Service (EAGLES)" class="achievement3-img">
+          <div class="ach-title">Edusave Scholarship & Edusave Award for Achievement, Good Leadership and Service (EAGLES)</div>
+          <div class="ach-org">Ministry of Education</div>
+          <div class="ach-text">Receiving both the Edusave Scholarship and the EAGLES Award reflects consistent performance across academics, leadership, and service throughout my time in school. The Scholarship recognised my placing in the top 10% of my cohort, built on effective time management and the discipline to maintain high standards under pressure. The EAGLES Award went beyond academics, recognising my active contribution to the school community and my ability to balance responsibilities while contributing positively to those around me. Together, these awards reflect my commitment to giving my best across everything I take on, not just in the classroom.</div>
+        </div>
+      </div>
+
+      <div class="achievement-item">
+        <div class="ach-year">2023</div>
+        <div>
+          <img src="IMG_2496%202.jpg" alt="Academic Excellence in Geography" class="achievement4-img">
+          <div class="ach-title">Academic Excellence in Geography</div>
+          <div class="ach-org">Zhenghua Secondary School</div>
+          <div class="ach-text">In 2023, I excelled in this subject, achieving a mark that placed me amongst the top performers in my cohort. This academic achievement reflects my deep curiosity about the world's landscapes, cultures, and how human and physical processes interact. It wasn't just about memorisation; I actively sought to understand the complex relationships that shape our planet. This success fuelled my enthusiasm for geography, and I'm eager to continue exploring this fascinating subject further.</div>
+        </div>
+      </div>
+
+      <div class="achievement-item">
+        <div class="ach-year">2023</div>
+        <div>
+          <img src="IMG_2495.jpg" alt="Edusave Scholarship" class="achievement3-img">
+          <div class="ach-title">Edusave Scholarship</div>
+          <div class="ach-org">Ministry of Education, Singapore</div>
+          <div class="ach-text">My dedication to academics has consistently placed me among the top performers.  This drive is evident in my rankings, where I've secured a spot within the top 10% of my cohort. This achievement isn't just a mark on a report card – it reflects my commitment to understanding concepts deeply and pushing myself to excel.</div>
+        </div>
+      </div>
+
+      <div class="achievement-item">
+        <div class="ach-year">2023</div>
+        <div>
+          <img src="IMG_2499.jpg" alt="First Aid Certification" class="achievement2-img">
+          <div class="ach-title">First Aid Certification</div>
+          <div class="ach-org">Singapore Red Cross Society</div>
+          <div class="ach-text">Completed the First Aid GMW (Gold Modular Workshop) certification, covering foundational to advanced life-saving skills. Reflects my commitment to being a capable and adaptable first responder in diverse emergency situations.</div>
+        </div>
+      </div>
+
+      <div class="achievement-item">
+        <div class="ach-year">2022</div>
+        <div>
+          <img src="IMG_2494.jpg" alt="Education Merit Award" class="achievement3-img">
+          <div class="ach-title">Education Merit Award</div>
+          <div class="ach-org">Ministry of Education, Singapore</div>
+          <div class="ach-text">Attaining the Education Merit Award is a testament to the dedication to academic excellence. This recognition celebrates not only my achievements in the classroom but also my commitment to continuous learning and pursuit of knowledge.</div>
+        </div>
+      </div>
+
+      <div class="achievement-item">
+        <div class="ach-year">2022</div>
+        <div>
+          <img src="IMG_1020%202.jpg" alt="Smoke Free Ambassador Competition - Second Place" class="achievement5-img">
+          <div class="ach-title">Smoke Free Ambassador Competition - Second Place</div>
+          <div class="ach-org">Singapore Red Cross Society</div>
+          <div class="ach-text">It was a tough task to come in second in the Smoke-free Ambassador competition, especially up against institutions like Raffles. It was no minor accomplishment to overcome such fierce opposition; it demonstrated our tenacity and fortitude. Even if things were difficult, we overcame them and took pride in coming in second.</div>
+        </div>
+      </div>
+
+    </div><!-- /#achievements-hidden -->
+
+    <button class="achievements-toggle" id="achievementsToggleBtn" onclick="toggleAchievements()">
+      <span id="achievementsToggleText">Show More Achievements</span>
+      <span class="toggle-arrow">▾</span>
+    </button>
 
   </div>
 </section>
@@ -1512,26 +1567,27 @@ Beyond academics, my dedication to service was reflected in earning the Silver A
   <div class="section-label">05 — Leadership</div>
   <h2 class="section-title">How I show<br>up for others.</h2>
   <div class="leadership-grid">
-<div class="leadership-card" onclick="openDetail('detail-PCP')" style="cursor:pointer;">
+    <div class="leadership-card" onclick="openDetail('detail-PCP')" style="cursor:pointer;">
       <img src="80022749-8d0e-405e-b997-dcb5198b843d.JPG" alt="Leadership" class="service2-img">
       <div class="lcard-role">Role // Class Chairperson</div>
       <div class="lcard-title">Class Committee</div>
       <div class="lcard-text">As Class Chairperson at Singapore Polytechnic, I took on key responsibilities in representing my class, coordinating class activities, and serving as the main point of contact between my classmates and the school. This role strengthened my communication, organisation, and leadership skills, reflecting my commitment to fostering a positive and cohesive class environment.</div>
       <button class="view-project-btn" onclick="openDetail('detail-PCP')">View Details ↗</button>
     </div>
-<div class="leadership-card" onclick="openDetail('detail-rcy')" style="cursor:pointer;">
+    <div class="leadership-card" onclick="openDetail('detail-rcy')" style="cursor:pointer;">
       <img src="IMG_3143%202.jpg" alt="Leadership" class="service-img">
       <div class="lcard-role">Role // Head of Footdrill & Logistics</div>
       <div class="lcard-title">Red Cross Youth — Head of Footdrill & Logistics</div>
       <div class="lcard-text">As a Red Cross Cadet at Zhenghua Secondary School for four years, I took on key leadership responsibilities including overseeing planning decisions, coordinating events, and ensuring operational readiness. This experience strengthened my leadership, decision-making, and accountability, reflecting my commitment to contributing meaningfully in a team-oriented environment.</div>
       <button class="view-project-btn" onclick="openDetail('detail-rcy')">View Details ↗</button>
     </div>
-<div class="leadership-card" onclick="openDetail('detail-psl')" style="cursor:pointer;">
+    <div class="leadership-card" onclick="openDetail('detail-psl')" style="cursor:pointer;">
       <img src="c96afbbc-b4bb-4108-b64d-2efd19fe9117.jpg" alt="Leadership" class="service-img">
       <div class="lcard-role">Role // Peer Support Leader</div>
       <div class="lcard-title">Class Committee</div>
       <div class="lcard-text">Elected as a Peer Support Leader for four consecutive years, I actively contributed to school events and served as an empathetic presence for classmates navigating mental health challenges — reflecting my commitment to fostering a supportive and caring school community.</div>
       <button class="view-project-btn" onclick="openDetail('detail-psl')">View Details ↗</button>
+    </div>
   </div>
 </section>
 
@@ -1541,7 +1597,7 @@ Beyond academics, my dedication to service was reflected in earning the Silver A
   <h2 class="section-title">What people<br>say.</h2>
   <div class="testimonials-grid">
     <div class="testimonial-card">
-      <p class="testimonial-text">As Zhen wei's form teacher for the past four years, I have had the As Zhen wei's form teacher for the past four years, I have had the privilege of witnessing his strong academic abilities, remarkable independence and motivation. He was able to consistently demonstrate a high level of independence in his approach to learning. He shows a remarkable ability to grasp complex concepts quickly and apply them effectively in both theoretical and practical settings. He approaches every task with enthusiasm and a strong work ethic, always striving for excellence in everything he does. Zhen wei's passion in the Sciences is evident in his active participation during lessons. I have no doubt that Zhen wei's strong work ethic, independence, motivation, and confidence will serve him well in his future academic endeavors. In conclusion, l recommend Zhen wei for admission to the Electrical and Electronic Engineering course.</p>
+      <p class="testimonial-text">As Zhen wei's form teacher for the past four years, I have had the privilege of witnessing his strong academic abilities, remarkable independence and motivation. He was able to consistently demonstrate a high level of independence in his approach to learning. He shows a remarkable ability to grasp complex concepts quickly and apply them effectively in both theoretical and practical settings. He approaches every task with enthusiasm and a strong work ethic, always striving for excellence in everything he does. Zhen wei's passion in the Sciences is evident in his active participation during lessons. I have no doubt that Zhen wei's strong work ethic, independence, motivation, and confidence will serve him well in his future academic endeavors. In conclusion, l recommend Zhen wei for admission to the Electrical and Electronic Engineering course.</p>
       <div class="testimonial-author">Mrs. Koh Ming Hui</div>
       <div class="testimonial-role">Geography Teacher & Form Teacher, Zhenghua Secondary School</div>
     </div>
@@ -1605,144 +1661,33 @@ experiences working with him.</p>
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-  // Animate skill bars on scroll
-  const fills = document.querySelectorAll('.skill-fill');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const el = entry.target;
-        const w = parseFloat(el.dataset.width);
-        el.style.transform = `scaleX(${w})`;
-        el.classList.add('animate');
-      }
-    });
-  }, { threshold: 0.3 });
-  fills.forEach(f => observer.observe(f));
-
-  // Typewriter effect for hero tag
-  const tag = document.querySelector('.hero-tag');
-  const tagText = '// Student Engineer & Maker';
-  tag.textContent = '';
-  let i = 0;
-  setTimeout(() => {
-    const interval = setInterval(() => {
-      if (i <= tagText.length) {
-        tag.innerHTML = tagText.slice(0, i) + '<span class="cursor"></span>';
-        i++;
-      } else {
-        clearInterval(interval);
-        tag.innerHTML = tagText;
-      }
-    }, 40);
-  }, 600);
-
-  // Smooth nav highlight
-  const sections = document.querySelectorAll('section[id]');
-  const navLinks = document.querySelectorAll('.nav-links a');
-  window.addEventListener('scroll', () => {
-    let current = '';
-    sections.forEach(s => {
-      if (window.scrollY >= s.offsetTop - 120) current = s.id;
-    });
-    navLinks.forEach(link => {
-      link.style.color = link.getAttribute('href') === `#${current}` ? 'var(--accent)' : '';
-    });
-  });
-
-  // Fade-in sections on scroll
-  const sectionEls = document.querySelectorAll('#about, #projects, #achievements, #leadership, #testimonials, #contact');
-  const fadeObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.style.opacity = '1';
-        entry.target.style.transform = 'translateY(0)';
-      }
-    });
-  }, { threshold: 0.08 });
-  sectionEls.forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(30px)';
-    el.style.transition = 'opacity 0.9s ease, transform 0.9s ease';
-    fadeObserver.observe(el);
-  });
-
-  // ── HAMBURGER MENU ──
-  const hamburger = document.getElementById('hamburger');
-  const mobilePanel = document.getElementById('mobilePanel');
-  const mobileOverlay = document.getElementById('mobileOverlay');
-
-  function openMenu() {
-    hamburger.classList.add('open');
-    mobilePanel.classList.add('active');
-    mobileOverlay.classList.add('active');
-    document.body.style.overflow = 'hidden';
-  }
-  function closeMenu() {
-    hamburger.classList.remove('open');
-    mobilePanel.classList.remove('active');
-    mobileOverlay.classList.remove('active');
-    document.body.style.overflow = '';
-  }
-  hamburger.addEventListener('click', () => {
-    hamburger.classList.contains('open') ? closeMenu() : openMenu();
-  });
-  mobileOverlay.addEventListener('click', closeMenu);
-  document.querySelectorAll('.mobile-nav-link').forEach(link => {
-    link.addEventListener('click', closeMenu);
-  });
-
-  // ── DETAIL PANELS ──
-  let savedScrollPos = 0;
-
-  function openDetail(id) {
-    savedScrollPos = window.scrollY;
-    document.getElementById(id).classList.add('active');
-    document.body.style.overflow = 'hidden';
-  }
-
-  function closeDetail(id) {
-    document.getElementById(id).classList.remove('active');
-    document.body.style.overflow = '';
-    setTimeout(() => window.scrollTo(0, savedScrollPos), 50);
-  }
-  // Close on overlay click
-  document.querySelectorAll('.detail-overlay').forEach(overlay => {
-    overlay.addEventListener('click', function(e) {
-      if (e.target === this) closeDetail(this.id);
-    });
-  });
-  // Close on Escape key
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') {
-      document.querySelectorAll('.detail-overlay.active').forEach(o => closeDetail(o.id));
-      closeMenu();
-    }
-  });
-
-</script>
-
-<!-- ── DETAIL OVERLAY: LINE-FOLLOWING ROBOT ── -->
+<!-- ── DETAIL OVERLAY: AGRICULTURAL MONITORING BOT ── -->
 <div class="detail-overlay" id="detail-robot">
   <div class="detail-panel">
     <button class="detail-back" onclick="closeDetail('detail-robot')">← Back to Portfolio</button>
     <div class="detail-tag">// PROJECT // 002</div>
-    <div class="detail-title">Line-Following Robot</div>
-    <div class="detail-org">Arduino · IoT · Sensors · C++</div>
-    <div class="detail-org">Line Following Robot</div>
+    <div class="detail-title">Agricultural Monitoring Bot</div>
+    <div class="detail-org">Microcontroller · IoT · Sensors · C++</div>
+    <div class="detail-org">Agricultural Monitoring</div>
+
+    <div style="position: relative; padding-bottom: 56.25%; height: 0; margin-bottom: 2rem;">
+    <iframe src="https://youtube.com/shorts/5dVF-cU1CII?feature=share"
+    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 1px solid var(--border);"
+    allowfullscreen>
+    </iframe>
+    </div>
     <div class="img-grid" style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.75rem; margin-bottom: 2rem;">
-      <img src="WhatsApp Image 2026-03-24 at 16.46.21.jpeg" alt="Description" class="detail-img" style="margin-bottom: 0;">
-      <img src="WhatsApp Image 2026-03-24 at 16.47.03.jpeg" alt="Description" class="detail-img" style="margin-bottom: 0;">
-      <img src="WhatsApp Image 2026-03-24 at 16.47.14.jpeg" alt="Description" class="detail-img" style="margin-bottom: 0;">
+      <img src="74b15f5e-7725-43f1-b73c-fd981ac64b68.JPG" alt="Description" class="detail-img" style="margin-bottom: 0;">
+      <img src="IMG_5844.jpg" alt="Description" class="detail-img" style="margin-bottom: 0;">
     </div>
     <div class="detail-body">
-      <p>The Line-Following Robot is a collaborative engineering project that I worked on with my team to design and build a functional autonomous system capable of following a predefined path using infrared sensors and programmed control logic.</p>
-      <p>Additional sensors were integrated into the robot to expand its practical applications, including potential use in areas such as agricultural monitoring and automation — allowing the robot to detect environmental conditions beyond simple path tracking.</p>
-      <p>The project required combining hardware assembly, programming logic in C++, and systematic testing to ensure reliable and consistent performance across different track configurations.</p>
-      <p>Through this experience, I gained hands-on knowledge in robotics, embedded systems programming, sensor integration, and the importance of iterative testing and teamwork when solving real-world engineering problems.</p>
+      <p>The Agricultural Monitoring Bot is a collaborative CDIO engineering project that I worked on with my team to design and build an autonomous robot capable of patrolling urban farms and community gardens in Singapore to protect crops from climate-driven threats such as unpredictable rainfall and prolonged dry spells.</p>
+      <p>The bot uses soil moisture, temperature, and humidity sensors to continuously monitor plant health, while IR and ultrasonic sensors allow it to navigate safely around obstacles as it moves through the growing area; when readings cross set thresholds, it triggers on-site LED and buzzer alerts and sends notifications to caretakers over WiFi.</p>
+      <p>The project required combining hardware assembly (microcontroller, motor driver, servo, and sensor wiring), embedded programming logic, and iterative prototyping and testing across the Conceive, Design, and Implement phases, along with research using tools like Mintel and AI agents to refine the design and troubleshoot components.</p>
+      <p>The project was shortlisted for presentation to the school directors, and although it was not selected as a top 5 project in the cohort, it stood out enough to earn that recognition. Through this experience, I gained hands-on knowledge in robotics, embedded systems and sensor integration, and the value of structured ideation frameworks and teamwork in developing a practical solution to a real-world sustainability and food-security problem.</p>
     </div>
     <div class="detail-tags">
-      <span class="tag2">Arduino</span>
+      <span class="tag2">Microcontroller</span>
       <span class="tag2">IoT</span>
       <span class="tag2">Sensors</span>
       <span class="tag2">C++</span>
@@ -1843,6 +1788,7 @@ experiences working with him.</p>
   </div>
 </div>
 
+<!-- ── DETAIL OVERLAY: DIRECTOR'S HONOUR ROLL ── -->
 <div class="detail-overlay" id="detail-DHR">
   <div class="detail-panel">
     <button class="detail-back" onclick="closeDetail('detail-DHR')">← Back to Portfolio</button>
@@ -1851,6 +1797,7 @@ experiences working with him.</p>
     <div class="detail-org">Singapore Polytechnic</div>
     <img src="Copy of 119A5673.jpg" alt="DHR" class="detail-img">
     <img src="DHR_page-0001.jpg" alt="DHR" class="detail-img">
+    <div class="detail-body">
       <p>Being named a Director's Honour Roll recipient is an achievement I take great pride in, as it places me in the top 10% of my cohort — a recognition that reflects consistent academic dedication across my years in school.</p>
       <p>Maintaining this standard required discipline and a genuine commitment to learning, even while balancing leadership roles, co-curricular commitments, and community service responsibilities simultaneously.</p>
       <p>This achievement is not just a reflection of academic performance, but of my ability to manage multiple responsibilities without compromising on the quality of my work.</p>
@@ -1859,6 +1806,7 @@ experiences working with him.</p>
   </div>
 </div>
 
+<!-- ── DETAIL OVERLAY: NUS AI CHALLENGE ── -->
 <div class="detail-overlay" id="detail-nusai">
   <div class="detail-panel">
     <button class="detail-back" onclick="closeDetail('detail-nusai')">← Back to Portfolio</button>
@@ -1871,7 +1819,6 @@ experiences working with him.</p>
     allowfullscreen>
     </iframe>
     </div>
-    </video>
     <div class="detail-body">
       <p>Our team identified Singapore's rapidly ageing population as a pressing challenge, and chose to focus specifically on elderly individuals living with dementia — a group that faces significant daily difficulties that are often managed by overstretched caregivers.</p>
       <p>We developed a Telegram bot powered by AI that goes beyond passive reminders. Unlike conventional apps, our bot actively prompts users at scheduled intervals to check in on their well-being and medication intake, reducing the risk of missed doses and undetected health changes.</p>
@@ -1882,6 +1829,7 @@ experiences working with him.</p>
   </div>
 </div>
 
+<!-- ── DETAIL OVERLAY: WARRANT OFFICER ── -->
 <div class="detail-overlay" id="detail-wo">
   <div class="detail-panel">
     <button class="detail-back" onclick="closeDetail('detail-wo')">← Back to Portfolio</button>
@@ -2025,6 +1973,140 @@ experiences working with him.</p>
     </div>
   </div>
 </div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+  // Animate skill bars on scroll
+  const fills = document.querySelectorAll('.skill-fill');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        const w = parseFloat(el.dataset.width);
+        el.style.transform = `scaleX(${w})`;
+        el.classList.add('animate');
+      }
+    });
+  }, { threshold: 0.3 });
+  fills.forEach(f => observer.observe(f));
+
+  // Typewriter effect for hero tag
+  const tag = document.querySelector('.hero-tag');
+  const tagText = '// Student Engineer & Maker';
+  tag.textContent = '';
+  let i = 0;
+  setTimeout(() => {
+    const interval = setInterval(() => {
+      if (i <= tagText.length) {
+        tag.innerHTML = tagText.slice(0, i) + '<span class="cursor"></span>';
+        i++;
+      } else {
+        clearInterval(interval);
+        tag.innerHTML = tagText;
+      }
+    }, 40);
+  }, 600);
+
+  // Smooth nav highlight
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 120) current = s.id;
+    });
+    navLinks.forEach(link => {
+      link.style.color = link.getAttribute('href') === `#${current}` ? 'var(--accent)' : '';
+    });
+  });
+
+  // Fade-in sections on scroll
+  const sectionEls = document.querySelectorAll('#about, #projects, #achievements, #leadership, #testimonials, #contact');
+  const fadeObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.08 });
+  sectionEls.forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(30px)';
+    el.style.transition = 'opacity 0.9s ease, transform 0.9s ease';
+    fadeObserver.observe(el);
+  });
+
+  // ── HAMBURGER MENU ──
+  const hamburger = document.getElementById('hamburger');
+  const mobilePanel = document.getElementById('mobilePanel');
+  const mobileOverlay = document.getElementById('mobileOverlay');
+
+  function openMenu() {
+    hamburger.classList.add('open');
+    mobilePanel.classList.add('active');
+    mobileOverlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMenu() {
+    hamburger.classList.remove('open');
+    mobilePanel.classList.remove('active');
+    mobileOverlay.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.contains('open') ? closeMenu() : openMenu();
+  });
+  mobileOverlay.addEventListener('click', closeMenu);
+  document.querySelectorAll('.mobile-nav-link').forEach(link => {
+    link.addEventListener('click', closeMenu);
+  });
+
+  // ── DETAIL PANELS ──
+  let savedScrollPos = 0;
+
+  window.openDetail = function(id) {
+    savedScrollPos = window.scrollY;
+    document.getElementById(id).classList.add('active');
+    document.body.style.overflow = 'hidden';
+  };
+
+  window.closeDetail = function(id) {
+    document.getElementById(id).classList.remove('active');
+    document.body.style.overflow = '';
+    setTimeout(() => window.scrollTo(0, savedScrollPos), 50);
+  };
+
+  // Close on overlay click (background click) — now correctly finds all overlays
+  // since this whole block runs after the DOM (including the overlay divs) has loaded.
+  document.querySelectorAll('.detail-overlay').forEach(overlay => {
+    overlay.addEventListener('click', function(e) {
+      if (e.target === this) window.closeDetail(this.id);
+    });
+  });
+
+  // Close on Escape key
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('.detail-overlay.active').forEach(o => window.closeDetail(o.id));
+      closeMenu();
+    }
+  });
+
+  // ── ACHIEVEMENTS SHOW MORE / SHOW LESS ──
+  window.toggleAchievements = function() {
+    const hidden = document.getElementById('achievements-hidden');
+    const btn = document.getElementById('achievementsToggleBtn');
+    const label = document.getElementById('achievementsToggleText');
+    const isOpen = hidden.classList.toggle('show');
+    btn.classList.toggle('open', isOpen);
+    label.textContent = isOpen ? 'Show Fewer Achievements' : 'Show More Achievements';
+  };
+
+});
+</script>
 
 </body>
 </html>
