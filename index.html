@@ -609,6 +609,10 @@
   .achievements-toggle.open .toggle-arrow {
     transform: rotate(180deg);
   }
+  .achievements-collapse-top {
+    margin-top: 0;
+    margin-bottom: 2rem;
+  }
 
   /* ── LEADERSHIP ── */
   #leadership { border-top: 1px solid var(--border); }
@@ -1397,6 +1401,11 @@ Beyond academics, my dedication to service was reflected in earning the Silver A
     <!-- ═══ HIDDEN BY DEFAULT: click "Show More" to reveal ═══ -->
     <div id="achievements-hidden">
 
+      <button class="achievements-toggle achievements-collapse-top" onclick="toggleAchievements()">
+        <span>Collapse</span>
+        <span class="toggle-arrow" style="transform: rotate(180deg);">▾</span>
+      </button>
+
       <!-- ADD NEW ACHIEVEMENTS HERE — just copy an .achievement-item block and edit it -->
 
       <div class="achievement-item">
@@ -1444,7 +1453,7 @@ Beyond academics, my dedication to service was reflected in earning the Silver A
       <div class="achievement-item">
         <div class="ach-year">2024</div>
         <div>
-          <img src="IMG_2497.HEIC" alt="Edusave Scholarship & Edusave Award for Achievement, Good Leadership and Service (EAGLES)" class="achievement3-img">
+          <img src="IMG_2497.jpg" alt="Edusave Scholarship & Edusave Award for Achievement, Good Leadership and Service (EAGLES)" class="achievement3-img">
           <div class="ach-title">Edusave Scholarship & Edusave Award for Achievement, Good Leadership and Service (EAGLES)</div>
           <div class="ach-org">Ministry of Education</div>
           <div class="ach-text">Receiving both the Edusave Scholarship and the EAGLES Award reflects consistent performance across academics, leadership, and service throughout my time in school. The Scholarship recognised my placing in the top 10% of my cohort, built on effective time management and the discipline to maintain high standards under pressure. The EAGLES Award went beyond academics, recognising my active contribution to the school community and my ability to balance responsibilities while contributing positively to those around me. Together, these awards reflect my commitment to giving my best across everything I take on, not just in the classroom.</div>
@@ -1454,7 +1463,7 @@ Beyond academics, my dedication to service was reflected in earning the Silver A
       <div class="achievement-item">
         <div class="ach-year">2023</div>
         <div>
-          <img src="IMG_2496 2.jpg" alt="Academic Excellence in Geography" class="achievement4-img">
+          <img src="IMG_2496%202.jpg" alt="Academic Excellence in Geography" class="achievement4-img">
           <div class="ach-title">Academic Excellence in Geography</div>
           <div class="ach-org">Zhenghua Secondary School</div>
           <div class="ach-text">In 2023, I excelled in this subject, achieving a mark that placed me amongst the top performers in my cohort. This academic achievement reflects my deep curiosity about the world's landscapes, cultures, and how human and physical processes interact. It wasn't just about memorisation; I actively sought to understand the complex relationships that shape our planet. This success fuelled my enthusiasm for geography, and I'm eager to continue exploring this fascinating subject further.</div>
@@ -1464,7 +1473,7 @@ Beyond academics, my dedication to service was reflected in earning the Silver A
       <div class="achievement-item">
         <div class="ach-year">2023</div>
         <div>
-          <img src="IMG_2495.HEIC" alt="Edusave Scholarship" class="achievement3-img">
+          <img src="IMG_2495.jpg" alt="Edusave Scholarship" class="achievement3-img">
           <div class="ach-title">Edusave Scholarship</div>
           <div class="ach-org">Ministry of Education, Singapore</div>
           <div class="ach-text">My dedication to academics has consistently placed me among the top performers.  This drive is evident in my rankings, where I've secured a spot within the top 10% of my cohort. This achievement isn't just a mark on a report card – it reflects my commitment to understanding concepts deeply and pushing myself to excel.</div>
@@ -1671,14 +1680,14 @@ experiences working with him.</p>
     <div class="detail-org">Agricultural Monitoring</div>
 
     <div style="position: relative; padding-bottom: 56.25%; height: 0; margin-bottom: 2rem;">
-    <iframe src="https://youtube.com/shorts/5dVF-cU1CII?feature=share"
+    <iframe src="https://www.youtube.com/embed/5dVF-cU1CII"
     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 1px solid var(--border);"
     allowfullscreen>
     </iframe>
     </div>
     <div class="img-grid" style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.75rem; margin-bottom: 2rem;">
       <img src="74b15f5e-7725-43f1-b73c-fd981ac64b68.JPG" alt="Description" class="detail-img" style="margin-bottom: 0;">
-      <img src="IMG_5844.HEIC" alt="Description" class="detail-img" style="margin-bottom: 0;">
+      <img src="IMG_5844.jpg" alt="Description" class="detail-img" style="margin-bottom: 0;">
     </div>
     <div class="detail-body">
       <p>The Agricultural Monitoring Bot is a collaborative CDIO engineering project that I worked on with my team to design and build an autonomous robot capable of patrolling urban farms and community gardens in Singapore to protect crops from climate-driven threats such as unpredictable rainfall and prolonged dry spells.</p>
